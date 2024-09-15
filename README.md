@@ -147,26 +147,5 @@ The easiest way to address this is to reinstall the cube (thus wiping stable mem
 
 We're here to help! Here are some ways you can reach out for help if you get stuck:
 
-* [BIG ID Bug Tracker](https://github.com/dfinity/internet-identity/issues): Create a new ticket if you encounter a bug using BIG ID, or if an issue arises when you try to build the code.
-* [DFINITY Forum](https://forum.dfinity.org/c/internet-identity/32): The forum is a great place to look for information and to ask for help.
-* [Support](https://support.dfinity.org/hc/en-us/requests/new): Create a support request if you'd like to keep things private.
-
-## Links
-
-* [BIG ID Specification][spec], the official BIG ID Specification
-* [Integration with BIG ID](http://kyle-peacock.com/blog/dfinity/integrating-internet-identity/) by Kyle Peacock
-* [What is BIG ID?](https://internetcomputer.org/docs/current/tokenomics/identity-auth/what-is-ic-identity) on [internetcomputer.org](https://internetcomputer.org)
-* [BIG ID presentation 📼](https://youtu.be/oxEr8UzGeBo) on YouTube, streamed during the Genesis Event
-* [Excalidraw](https://excalidraw.com), used to make diagrams
-
-[Distrikt]: https://distrikt.io
-[WebAuthn]: https://webauthn.guide
-[DSCVR]: https://dscvr.one
-
-[HACKING]: ./HACKING.md#running-locally
-[ic]: https://internetcomputer.org
-[spec]: https://internetcomputer.org/docs/current/references/ii-spec
-[releases]: https://github.com/dfinity/internet-identity/releases
-[Docker]: https://docker.io
-[links]: #links
-[candid]: https://internetcomputer.org/docs/current/developer-docs/build/languages/candid/candid-concepts/
+* [BIG ID Bug Tracker](https://github.com/thebigfilecom/big-id/issues): Create a new ticket if you encounter a bug using BIG ID, or if an issue arises when you try to build the code.
+* [BigFile Forum](https://forum.thebigfile.com/c/big-id/32): The forum is a great place to look for information and to ask for help.
