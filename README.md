@@ -58,13 +58,9 @@ To access BIG ID or configure it for your dapp, use one of the following URLs:
 
 ### Architecture Overview
 
-BIG ID is an authentication service for the [Internet Computer][ic]. All programs on the Internet Computer are Wasm modules, or canisters (cube smart contracts).
-
-![Architecture](./ii-architecture.png) <!-- this is an excalidraw.com image, source is ii-architecture.excalidraw -->
+BIG ID is an authentication service for the [BigFile][BIG]. All programs on the BigFile are Wasm modules, or cubes (cube smart contracts).
 
 BIG ID runs as a single cube which both serves the frontend application code, and handles the requests sent by the frontend application code.
-
-> 💡 The cube (backend) interface is specified by the [internet_identity.did](./src/internet_identity/internet_identity.did) [candid] interface. The (backend) cube code is located in [`src/internet_identity`](./src/internet_identity), and the frontend application code (served by the cube through the `http_request` method) is located in [`src/frontend`](./src/frontend).
 
 The BIG ID authentication service works indirectly by issuing "delegations" on the user's behalf; basically attestations signed with some private cryptographic material owned by the user. The private cryptographic material never leaves the user's device. The BIG ID frontend application uses the [WebAuthn] API to first create the private cryptographic material, and then the [WebAuthn] API is used again to sign delegations.
 
@@ -120,7 +116,7 @@ frontend. -->
 
 | Environment variable | Description |
 | --- | --- |
-| `II_FETCH_ROOT_KEY` | When enabled, this instructs the frontend code to fetch the "root key" from the replica.<br/>The Internet Computer (https://ic0.app) uses a private key to sign responses. This private key not being available locally, the (local) replica generates its own. This option effectively tells the BIG ID frontend to fetch the public key from the replica it connects to. When this option is _not_ enabled, the BIG ID frontend code will use the (hard coded) public key of the Internet Computer. |
+| `II_FETCH_ROOT_KEY` | When enabled, this instructs the frontend code to fetch the "root key" from the replica.<br/>The BigFile (https://ic0.app) uses a private key to sign responses. This private key not being available locally, the (local) replica generates its own. This option effectively tells the BIG ID frontend to fetch the public key from the replica it connects to. When this option is _not_ enabled, the BIG ID frontend code will use the (hard coded) public key of the Internet Computer. |
 | `II_DUMMY_CAPTCHA` | When enabled, the CAPTCHA challenge (sent by the cube code to the frontend code) is always the known string `"a"`. This is useful for automated testing. |
 | `II_DUMMY_AUTH` | When enabled, the frontend code will use a known, stable private key for registering anchors and authenticating. This means that all anchors will have the same public key(s). In particular this bypasses the WebAuthn flows (TouchID, Windows Hello, etc), which simplifies automated testing. |
 | `II_DEV_CSP` | When enabled, the content security policy is weakend to allow connections to II using HTTP and allow II to connect via http in order to facilitate development.                                                                                                                                                                                                                                                                                                                                                       |
@@ -131,7 +127,7 @@ We offer some pre-built Wasm modules that contain flavors, i.e. sets of features
 
 | Flavor | Description | |
 | --- | --- | :---: |
-| Production | This is the production build deployed to https://identity.ic0.app. Includes none of the build features. | [💾](https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_production.wasm.gz) |
+| Production | This is the production build deployed to https://big-id.thebigfile.com Includes none of the build features. | [💾](https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_production.wasm.gz) |
 | Test | This flavor is used by BIG ID's test suite. It fully supports authentication but uses a known CAPTCHA value for test automation. Includes the following features: <br/><ul><li><code>II_FETCH_ROOT_KEY</code></li><li><code>II_DUMMY_CAPTCHA</code></li></ul>| [💾](https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_test.wasm.gz) |
 | Development | This flavor contains a version of BIG ID that effectively performs no checks. It can be useful for external developers who want to integrate BIG ID in their project and care about the general BIG ID authentication flow, without wanting to deal with authentication and, in particular, WebAuthentication. Includes the following features: <br/><ul><li><code>II_FETCH_ROOT_KEY</code></li><li><code>II_DUMMY_CAPTCHA</code></li><li><code>II_DUMMY_AUTH</code></li><li><code>II_DEV_CSP</code></li></ul><br/>See the [`using-dev-build`](demos/using-dev-build/README.md) project for an example on how to use this flavor.| [💾](https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz) |
 
